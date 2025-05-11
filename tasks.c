@@ -30,14 +30,14 @@ struct task gettask(FILE *trackfile) {
 
   char *times = buf;
   buf = strsep(&times, "\t");
-  if (times == NULL) { return notask; }
+  if (times == NULL) { free(buf); return notask; }
 
   char *timestart = strsep(&times, "\t");
-  if (timestart == NULL) { return notask; }
+  if (timestart == NULL) { free(buf); return notask; }
   long begintime = atol(timestart);
 
   char *timestop = strsep(&times, "\t \n");
-  if (timestop == NULL) { return notask; }
+  if (timestop == NULL) { free(buf); return notask; }
   long endtime = atol(timestop);
 
   // Task ongoing
