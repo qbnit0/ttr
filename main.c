@@ -37,6 +37,11 @@ int main (int argc, char** argv) {
     trackfile = fopen("tt.dat", "a+");
   }
 
+  if (trackfile == NULL) {
+    perror(RED "Failed to open file");
+    return 1;
+  }
+
   switch (opmode) {
     case BEGINTRACK:
       switch (stoplasttask(trackfile)) {
