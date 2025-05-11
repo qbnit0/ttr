@@ -6,6 +6,7 @@
 #include <unistd.h>
 
 #include "ansi.h"
+#include "strings.h"
 #include "tasks.h"
 #include "timefmt.h"
 
@@ -18,8 +19,15 @@ int main (int argc, char** argv) {
   bool ok = true;
 
   int opt;
-  while ((opt = getopt(argc, argv, "f:t:e")) != -1) {
+  // opterr = 0;
+  while ((opt = getopt(argc, argv, "f:t:ehv")) != -1) {
     switch (opt) {
+      case 'h':
+        printf(HELPMSG, argv[0]);
+        return 0;
+      case 'v':
+        printf(VERSMSG);
+        return 0;
       case 'f':
         trackfile = fopen(optarg, "a+");
         break;
@@ -29,7 +37,19 @@ int main (int argc, char** argv) {
         break;
       case 'e':
         opmode = ENDTRACK;
+        if (opmode == BEGINTRACK) {
+          // Make -e -t <> behave identically to -t <>
+          opmode = BEGINTRACK;
+        }
         break;
+      case ':':
+        fprintf(stderr, RED "%s: option requires an argument -- '%c'\n", argv[0], optopt);
+        fprintf(stderr, YELLOW "Try %s -h for usage help.\n", argv[0]);
+        return 1;
+      case '?':
+        fprintf(stderr, RED "%s: invalid option -- '%c'\n", argv[0], optopt);
+        fprintf(stderr, YELLOW "Try %s -h for usage help.\n", argv[0]);
+        return 1;
     }
   }
 
