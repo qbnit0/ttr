@@ -83,9 +83,14 @@ int main (int argc, char** argv) {
       size_t taskcount = 0;
       size_t duptasks = 0;
 
+      // Length of longest task name
+      size_t maxnamelen = 0;
+
       while (1) {
         task = gettask(trackfile);
         if (task.name == NULL) { break; }
+        size_t thislen = strlen(task.name);
+        if (thislen > maxnamelen) { maxnamelen = thislen; }
 
         // Find duplicates
         size_t taskno = taskcount++;;
@@ -114,7 +119,8 @@ int main (int argc, char** argv) {
         char *name = names[i];
         char *time = timefmt(times[i]);
 
-        printf(EMPHASIZE "%s" RESET YELLOW "\t\t%s\n" RESET, name, time);
+        int padding = maxnamelen - strlen(name);
+        printf(EMPHASIZE "%s" RESET YELLOW "%*s\t%s\n" RESET, name, padding, "", time);
 
         free(name);
         free(time);
