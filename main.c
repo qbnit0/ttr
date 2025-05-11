@@ -115,6 +115,9 @@ int main (int argc, char** argv) {
         free(time);
       }
 
+      free(names);
+      free(times);
+
       break;
   }
 
