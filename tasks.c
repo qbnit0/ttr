@@ -40,6 +40,11 @@ struct task gettask(FILE *trackfile) {
   if (timestop == NULL) { return notask; }
   long endtime = atol(timestop);
 
+  // Task ongoing
+  if (endtime == 0) {
+    endtime = time(0);
+  }
+
   char *taskname = realloc(buf, strlen(buf) + 1);
 
   struct task thistask = { taskname, endtime - begintime };
