@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include "timefmt.h"
+
 char *timefmt(long seconds) {
   char *ret = malloc(32);
   if (seconds < 60) { // Minute
