@@ -6,10 +6,10 @@
                 "  -h           Show this help message.\n"\
                 "  -t <TASK>    Start tracking task TASK, and\n"\
                 "               stop tracking any current task.\n"\
-                "  -f <FILE>    Log data to <FILE> instead of ~/.timetrack\n"\
+                "  -f <FILE>    Log data to <FILE> instead of ~/.ttr\n"\
                 "  -e           Stop tracking the current task.\n"\
                 "  -v           Display version information.\n"
-#define VERSMSG "timetrack (TimeTrack) " VERSION "\n"\
+#define VERSMSG "ttr (Terminal Time tRacker) " VERSION "\n"\
                 "Copyright (C) 2025 Maxim Evseev\n\n"\
                 "This program is free software: you can change and/or redistribute it\n"\
                 "under the GNU GPL version 3 or later.\n\n"\

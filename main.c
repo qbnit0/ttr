@@ -56,7 +56,7 @@ int main (int argc, char** argv) {
   if (trackfile == NULL) {
     char *homedir = getenv("HOME");
     char fname[256];
-    snprintf(fname, sizeof(fname), "%s/.timetrack", homedir);
+    snprintf(fname, sizeof(fname), "%s/.ttr", homedir);
     trackfile = fopen(fname, "a+");
   }
 
