@@ -102,7 +102,12 @@ int main (int argc, char** argv) {
         times[taskno] += task.time;
       }
 
-      printf(UNDERLINE "%ld tasks tracked\n" RESET, taskcount - duptasks);
+      if (taskcount - duptasks == 1) {
+        printf(UNDERLINE "1 task tracked\n" RESET);
+      } else {
+        printf(UNDERLINE "%ld tasks tracked\n" RESET, taskcount - duptasks);
+      }
+
 
       for (size_t i = 0; i < taskcount; i++) {
         if (names[i] == NULL) { continue; }
