@@ -34,7 +34,10 @@ int main (int argc, char** argv) {
   }
 
   if (trackfile == NULL) {
-    trackfile = fopen("tt.dat", "a+");
+    char *homedir = getenv("HOME");
+    char fname[256];
+    snprintf(fname, sizeof(fname), "%s/.timetrack", homedir);
+    trackfile = fopen(fname, "a+");
   }
 
   if (trackfile == NULL) {
