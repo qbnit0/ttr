@@ -1,3 +1,5 @@
+#ifndef ANSI_H
+#define ANSI_H
 // Reset to normal
 #define RESET "\e[0m"
 // Foreground colors
@@ -11,3 +13,4 @@
 #define UNDERLINE "\e[4m"
 #define EMPHASIZE "\e[3m"
 #define NORMAL "\e[22m"
+#endif
