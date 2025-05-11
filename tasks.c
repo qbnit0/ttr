@@ -3,6 +3,8 @@
 #include <string.h>
 #include <time.h>
 
+#include "tasks.h"
+
 int stoplasttask(FILE *trackfile) {
   fseek(trackfile, -1, SEEK_END);
   int lc = fgetc(trackfile);
@@ -19,11 +21,6 @@ int stoplasttask(FILE *trackfile) {
       return 1; // 1 -> other error
   }
 }
-
-struct task {
-  char *name;
-  long time;
-};
 
 struct task gettask(FILE *trackfile) {
   char *buf = malloc(1024);
