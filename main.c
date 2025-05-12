@@ -19,7 +19,7 @@ int main (int argc, char** argv) {
   bool ok = true;
 
   int opt;
-  // opterr = 0;
+  opterr = 0;
   while ((opt = getopt(argc, argv, "f:t:ehv")) != -1) {
     switch (opt) {
       case 'h':
